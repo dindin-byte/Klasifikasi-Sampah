@@ -1,0 +1,32 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    // Update Kotlin ke versi terbaru yang kompatibel dengan Gradle 8.14.3
+    ext.kotlin_version = '2.0.21'
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Update Android Gradle Plugin (AGP) ke versi terbaru
+        classpath 'com.android.tools.build:gradle:8.11.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' } // Tambahkan JitPack repository
+    }
+}
+
+// Bersihkan folder build saat menjalankan 'gradlew clean'
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}
